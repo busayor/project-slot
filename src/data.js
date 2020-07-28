@@ -2,10 +2,12 @@
 import iPhone11 from "./images/imagesSlot/Apple/iphone11pro.jpg"
 import img1 from "./images/imagesSlot/Apple/iphone11pro-2.jpg"
 import img2 from "./images/imagesSlot/Apple/iphone11pro-2.jpg"
+// import img2 from "./images/imagesSlot/Apple/iphone11pro-3.jpg"
 
 //Category = Phone//subCat = Apple//slug = iPhone8
 import iPhone8 from "./images/imagesSlot/Apple/iphone8.jpg"
-import img3 from "./images/imagesSlot/Apple/iphone8-2.jpg"
+import img3 from "./images/imagesSlot/Apple/iphone8-3.jpg"
+// import img3 from "./images/imagesSlot/Apple/iphone8-2.jpg"
 import img4 from "./images/imagesSlot/Apple/iphone8-3.jpg"
 
 //Category = Phone//subCat = Apple//slug = iPhone7
