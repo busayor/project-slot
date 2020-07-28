@@ -16,8 +16,8 @@ function App() {
       <Route exact path="/" component={Home}/>
       <Route exact path="/phones/" component={Phones}/>
       {/* room-name below will be the name of the room, to view a specific page */}
-      <Route exact path="/phones/:slug" component={SinglePhone}/>
-      <Route component={Error} />
+       <Route exact path="/phones/:slug" component={SinglePhone}/>
+      <Route component={Error} /> 
     </Switch>
     
     </>
