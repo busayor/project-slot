@@ -97,7 +97,7 @@ export default [
         ram: 3,
         rom: 128,
         installmentalPayment: false,
-        warranty: true,
+        warranty: false,
         featured: false,
         description:
           "Display: 5.8 OLED capacitive touchscreen, 1125 x 2436 pixels, 19.5:9 ratio, Processor -  iOS 13, Storage: 64GB/256GB/512GB ROM + 6GB RAM, Camera: Dual 12MP + 12MP + 12MP Rear/Dual 12MP + 3D ToF camera Front (With Quad-LED flash), Operating System: iOS 13,SIM: Dual SIM, Battery: Non-removable Li-Ion 3190 mAh battery, Network: 4G/ 3G/ 2G",

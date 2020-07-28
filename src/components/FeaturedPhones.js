@@ -16,7 +16,7 @@ export default class FeaturedPhones extends Component {
         })
         return (
             <section className="featured-rooms">
-                <Title title="featured rooms"/>
+                <Title title="Deals of the day"/>
                 <div className="featured-rooms-center">
                     {phones}
                 </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-// import RoomsFilter from './RoomsFilter'
+import PhonesFilter from './PhonesFilter'
 import PhonesList from './PhonesList'
 import {withShopConsumer} from '../Context'
 
@@ -9,8 +9,7 @@ function PhonesContainer({context}){
    
         return (
             <>
-                {/* <RoomsFilter rooms={rooms}/> */}
-                <h6>&nbsp;</h6>
+                <PhonesFilter phones={phones}/>
                 <PhonesList phones={sortedPhones}/>
             </>
             )

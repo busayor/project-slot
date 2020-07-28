@@ -9,6 +9,7 @@ class ShopProvider extends Component {
         sortedPhones:[],
         filteredPhones:[],
         category:'all',
+        subCategory:'all',
         ram:1,
         rom:1,
         price:0,
@@ -53,6 +54,79 @@ class ShopProvider extends Component {
         const phone = tempPhones.find((phone) => phone.slug === slug)
         return phone
     }
+
+    handleChange = (e) => {
+        const target = e.target
+        const value = target.type === 'checkbox' ? target.checked : target.value
+        const name = e.target.name
+
+
+        this.setState({
+            [name]:value
+        },this.filterPhones)
+    }
+
+
+    filterPhones = () => {
+        //why do we have to destructure this way???????/
+        let {
+            phones,
+            category,
+            subCategory,
+            ram,
+            rom,
+            price,
+            installmentalPayment,
+            warranty
+        } = this.state
+
+        //assign all the phones to temp
+        let tempPhones = [...phones]
+
+        //transform values, that is change them from string to integer
+        ram  = parseInt(ram)
+        rom  = parseInt(rom)
+        price  = parseInt(price)
+
+        //filter by category
+        if(category !== 'all'){
+            tempPhones = tempPhones.filter(phone => phone.category === category)
+        }
+
+        //filter by sub-category
+        if(subCategory !== 'all'){
+            tempPhones = tempPhones.filter(phone => phone.subCategory === subCategory)
+            // console.log(tempPhones)
+        }
+
+        //filter by ram
+        if(ram !==1){
+        tempPhones = tempPhones.filter(phone => phone.ram === ram)
+        }
+
+        //filter by rom
+        tempPhones = tempPhones.filter(phone => phone.rom === rom)
+
+        //filter by price
+        tempPhones = tempPhones.filter(phone => phone.price <= price)
+
+        // filter by innstallmental payment
+        if(installmentalPayment){
+            tempPhones = tempPhones.filter(phone => phone.installmentalPayment === true)
+        }
+
+        // filter by warranty
+        if(warranty){
+            tempPhones = tempPhones.filter(phone => phone.warranty === true)
+        }
+
+        //change state
+        this.setState({
+            sortedPhones:tempPhones
+        })
+    }
+
+
 
     render() {
         return (
