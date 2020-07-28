@@ -10,7 +10,9 @@ class ShopProvider extends Component {
         filteredPhones:[],
         category:'all',
         subCategory:'all',
-        ram:1,
+        ram:0,
+        minRam: 0,
+        maxRam: 0,
         rom:1,
         price:0,
         minPrice:0,
@@ -24,6 +26,7 @@ class ShopProvider extends Component {
         let phones = this.formatData(items)
         let featuredPhones = phones.filter(phone => phone.featured === true)
         let maxPrice = Math.max(...phones.map(item => item.price))
+        let maxRam = Math.max(...phones.map(item => item.ram))
         // let maxSize = Math.max(...phones.map(item => item.size))
 
         // console.log(phones)
@@ -33,7 +36,8 @@ class ShopProvider extends Component {
             featuredPhones: featuredPhones,
             sortedPhones: phones,
             price: maxPrice,
-            maxPrice
+            maxPrice,
+            maxRam
         })
     }
 
@@ -101,11 +105,11 @@ class ShopProvider extends Component {
 
         //filter by ram
         if(ram !==1){
-        tempPhones = tempPhones.filter(phone => phone.ram === ram)
+        tempPhones = tempPhones.filter(phone => phone.ram >= ram)
         }
 
         //filter by rom
-        tempPhones = tempPhones.filter(phone => phone.rom === rom)
+        tempPhones = tempPhones.filter(phone => phone.rom >= rom)
 
         //filter by price
         tempPhones = tempPhones.filter(phone => phone.price <= price)
