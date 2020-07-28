@@ -11,8 +11,6 @@ class ShopProvider extends Component {
         category:'all',
         subCategory:'all',
         ram:0,
-        minRam: 0,
-        maxRam: 0,
         rom:1,
         price:0,
         minPrice:0,
@@ -63,6 +61,8 @@ class ShopProvider extends Component {
         const target = e.target
         const value = target.type === 'checkbox' ? target.checked : target.value
         const name = e.target.name
+
+        // console.log(target)
 
 
         this.setState({

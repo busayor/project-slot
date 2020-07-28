@@ -249,7 +249,7 @@ export default [
         price: 921000,
         ram: 12,
         rom: 512,
-        installmentalPayment: false,
+        installmentalPayment: true,
         warranty: true,
         featured: false,
         description:

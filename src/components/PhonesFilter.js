@@ -152,6 +152,11 @@ export default function PhonesFilter({phones}) {
                     </div>
                 </div>
                 {/* end of extras */}
+                {/* reset button */}
+                <div className="form-group">
+                    <button className="btn-primary" name="reset" id="reset" onChange={handleChange}>reset filters</button>
+                </div>
+                {/* end reset button */}
             </form>
         </section>
     )
