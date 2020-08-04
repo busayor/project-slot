@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import items from './data'
+import Phones from './pages/Phones'
 
 const ShopContext = React.createContext()
 
@@ -17,7 +18,7 @@ class ShopProvider extends Component {
         maxPrice:0,
         installmentalPayment:false,
         warranty:false,
-        featured:false,
+        featured:false
     }
 
     componentDidMount(){
@@ -57,19 +58,16 @@ class ShopProvider extends Component {
         return phone
     }
 
+
     handleChange = (e) => {
         const target = e.target
         const value = target.type === 'checkbox' ? target.checked : target.value
         const name = e.target.name
 
-        // console.log(target)
-
-
         this.setState({
             [name]:value
         },this.filterPhones)
     }
-
 
     filterPhones = () => {
         //why do we have to destructure this way???????/
@@ -91,6 +89,7 @@ class ShopProvider extends Component {
         ram  = parseInt(ram)
         rom  = parseInt(rom)
         price  = parseInt(price)
+
 
         //filter by category
         if(category !== 'all'){
@@ -123,13 +122,28 @@ class ShopProvider extends Component {
         if(warranty){
             tempPhones = tempPhones.filter(phone => phone.warranty === true)
         }
-
         //change state
         this.setState({
             sortedPhones:tempPhones
         })
     }
 
+    handleReset = (e) => {
+        let {phones} = this.state
+        let maxPrice = Math.max(...phones.map(item => item.price))
+        let minRam = Math.min(...phones.map(item => item.ram))
+        this.setState({
+            sortedPhones: phones,
+            filteredPhones:[],
+            category:'all',
+            subCategory:'all',
+            installmentalPayment:false,
+            warranty:false,
+            featured:false,
+            price: maxPrice,
+            ram: minRam
+        })
+    }
 
 
     render() {
@@ -138,7 +152,8 @@ class ShopProvider extends Component {
                 <ShopContext.Provider 
                     value={{ ...this.state,
                     getPhone: this.getPhone,
-                    handleChange: this.handleChange
+                    handleChange: this.handleChange,
+                    handleReset: this.handleReset
                 }}
                 >
                     {this.props.children}

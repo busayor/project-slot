@@ -11,6 +11,7 @@ export default function PhonesFilter({phones}) {
     const context = useContext(ShopContext)
     const {
         handleChange,
+        handleReset,
         category,
         subCategory,
         ram,
@@ -154,7 +155,7 @@ export default function PhonesFilter({phones}) {
                 {/* end of extras */}
                 {/* reset button */}
                 <div className="form-group">
-                    <button className="btn-primary" name="reset" id="reset" onChange={handleChange}>reset filters</button>
+                    <button className="btn-primary" type="reset" name="reset" id="reset" onClick={handleReset}>reset filters</button>
                 </div>
                 {/* end reset button */}
             </form>
