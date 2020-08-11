@@ -1,19 +1,35 @@
-import React, { Component } from 'react'
+import React, { useState, useContext } from 'react'
 import logo from '../images/imagesSlot/logo-icon.png'
 import { FaAlignRight } from 'react-icons/fa'
 import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
+import {ShopContext} from '../Context'
 
-export default class NavBar extends Component {
+export default function NavBar () {
 
-    state={
-        isOpen:false
+    const [isOpen, setIsOpen] = useState(false)
+
+    //this userdata can be used on several components
+    const {userData,handleUserData} = useContext(ShopContext)
+
+
+    const handleToggle = () => {
+        setIsOpen(isOpen => !isOpen)
     }
 
-    handleToggle = () => {
-        this.setState({isOpen:!this.state.isOpen})
-    }
-    
-    render() {
+    let history = useHistory()
+    const handleLogout = (e) => {
+        e.preventDefault()
+        handleUserData(null)
+        localStorage.setItem('email', null)
+        localStorage.removeItem('email')
+        history.push("/")
+    }    
+
+        // console.log(localStorage.getItem('email') + "navbar")
+        // const email = localStorage.getItem('email')
+        const email = userData
+
         return (
             <nav className="navbar">
                 <div className="nav-center">
@@ -24,17 +40,19 @@ export default class NavBar extends Component {
                         <button 
                             type="button" 
                             className="nav-btn" 
-                            onClick={this.handleToggle}
+                            onClick={handleToggle}
                         >
                             <FaAlignRight className="nav-icon" />
                         </button>
                     </div>
-                    <ul className={this.state.isOpen?"nav-links show-nav":"nav-links"}>
+                    <ul className={isOpen?"nav-links show-nav":"nav-links"}>
                         <li><Link to="/">Home</Link></li>
                         <li><Link to="/phones">Shop</Link></li>
+                        {/* {email === null &&  <li><Link to="/login">Login</Link></li>}
+                        {email !== null &&  <li>Hi {email} <Link to="/logout">(Logout)</Link></li>} */}
+                        {email === null ? <li><Link to="/login">Login</Link></li> : <li>Hi {email} <a href="#" onClick={handleLogout}>(Logout)</a></li>}
                     </ul>
                 </div>    
             </nav>
         )
-    }
 }

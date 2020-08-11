@@ -18,7 +18,8 @@ class ShopProvider extends Component {
         maxPrice:0,
         installmentalPayment:false,
         warranty:false,
-        featured:false
+        featured:false,
+        userData: null
     }
 
     componentDidMount(){
@@ -36,7 +37,9 @@ class ShopProvider extends Component {
             sortedPhones: phones,
             price: maxPrice,
             maxPrice,
-            maxRam
+            maxRam,
+            //set userdata to null or to the users email on each refresh
+            userData: localStorage.getItem('email') ? localStorage.getItem('email') : null
         })
     }
 
@@ -67,6 +70,13 @@ class ShopProvider extends Component {
         this.setState({
             [name]:value
         },this.filterPhones)
+    }
+
+    //set userdata
+    handleUserData = (user) => {
+        this.setState({
+            userData: user
+        })
     }
 
     filterPhones = () => {
@@ -153,7 +163,8 @@ class ShopProvider extends Component {
                     value={{ ...this.state,
                     getPhone: this.getPhone,
                     handleChange: this.handleChange,
-                    handleReset: this.handleReset
+                    handleReset: this.handleReset,
+                    handleUserData: this.handleUserData
                 }}
                 >
                     {this.props.children}
