@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import logo from '../images/imagesSlot/logo-icon.png'
-import { FaAlignRight } from 'react-icons/fa'
+import { FaAlignRight,FaCartPlus } from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
 import {ShopContext} from '../Context'
@@ -10,7 +10,10 @@ export default function NavBar () {
     const [isOpen, setIsOpen] = useState(false)
 
     //this userdata can be used on several components
-    const {userData,handleUserData} = useContext(ShopContext)
+    const {userData,handleUserData,cart} = useContext(ShopContext)
+
+    // console.log(cart.length)
+    
 
 
     const handleToggle = () => {
@@ -51,6 +54,7 @@ export default function NavBar () {
                         {/* {email === null &&  <li><Link to="/login">Login</Link></li>}
                         {email !== null &&  <li>Hi {email} <Link to="/logout">(Logout)</Link></li>} */}
                         {email === null ? <li><Link to="/login">Login</Link></li> : <li>Hi {email} <a href="#" onClick={handleLogout}>(Logout)</a></li>}
+                    <li><Link to="/cart"><FaCartPlus />Cart ({cart.length})</Link></li>
                     </ul>
                 </div>    
             </nav>

@@ -38,6 +38,7 @@ export default [
       id: "1"
     },
     fields: {
+      id:"1",
       category: "phone",
       subCategory: "apple",
       name: "iPhone 11 Pro Dual Sim Plus",
@@ -45,9 +46,13 @@ export default [
       price: 560000,
       ram: 4,
       rom: 128,
+      img: iPhone11,
       installmentalPayment: false,
       warranty: true,
       featured: true,
+      inCart: false,
+      count: 0,
+      total: 0,
       description:
         "Display: 5.8 OLED capacitive touchscreen, 1125 x 2436 pixels, 19.5:9 ratio, Processor -  iOS 13, Storage: 64GB/256GB/512GB ROM + 6GB RAM, Camera: Dual 12MP + 12MP + 12MP Rear/Dual 12MP + 3D ToF camera Front (With Quad-LED flash), Operating System: iOS 13,SIM: Dual SIM, Battery: Non-removable Li-Ion 3190 mAh battery, Network: 4G/ 3G/ 2G",
         extras: [
@@ -89,6 +94,7 @@ export default [
       id: "2"
     },
     fields: {
+        id:"2",
         category: "phone",
         subCategory: "apple",
         name: "iPhone 8",
@@ -99,6 +105,10 @@ export default [
         installmentalPayment: false,
         warranty: true,
         featured: false,
+        inCart: false,
+        count: 0,
+        img: iPhone8,
+        total: 0,
         description:
           "Display: 5.8 OLED capacitive touchscreen, 1125 x 2436 pixels, 19.5:9 ratio, Processor -  iOS 13, Storage: 64GB/256GB/512GB ROM + 6GB RAM, Camera: Dual 12MP + 12MP + 12MP Rear/Dual 12MP + 3D ToF camera Front (With Quad-LED flash), Operating System: iOS 13,SIM: Dual SIM, Battery: Non-removable Li-Ion 3190 mAh battery, Network: 4G/ 3G/ 2G",
           extras: [
@@ -140,6 +150,7 @@ export default [
       id: "3"
     },
     fields: {
+        id:"3",
         category: "phone",
         subCategory: "apple",
         name: "iPhone 7",
@@ -150,6 +161,10 @@ export default [
         installmentalPayment: false,
         warranty: true,
         featured: false,
+        img: iPhone7,
+        inCart: false,
+        count: 0,
+        total: 0,
         description:
           "Display: 5.8 OLED capacitive touchscreen, 1125 x 2436 pixels, 19.5:9 ratio, Processor -  iOS 13, Storage: 64GB/256GB/512GB ROM + 6GB RAM, Camera: Dual 12MP + 12MP + 12MP Rear/Dual 12MP + 3D ToF camera Front (With Quad-LED flash), Operating System: iOS 13,SIM: Dual SIM, Battery: Non-removable Li-Ion 3190 mAh battery, Network: 4G/ 3G/ 2G",
           extras: [
@@ -191,6 +206,7 @@ export default [
       id: "4"
     },
     fields: {
+        id: "4",
         category: "phone",
         subCategory: "samsung",
         name: "samsung galaxy note 10",
@@ -198,9 +214,13 @@ export default [
         price: 428000,
         ram: 6,
         rom: 256,
+        img: samsungNote10,
         installmentalPayment: false,
         warranty: true,
         featured: false,
+        inCart: false,
+        count: 0,
+        total: 0,
         description:
           "Display: 5.8 OLED capacitive touchscreen, 1125 x 2436 pixels, 19.5:9 ratio, Processor -  iOS 13, Storage: 64GB/256GB/512GB ROM + 6GB RAM, Camera: Dual 12MP + 12MP + 12MP Rear/Dual 12MP + 3D ToF camera Front (With Quad-LED flash), Operating System: iOS 13,SIM: Dual SIM, Battery: Non-removable Li-Ion 3190 mAh battery, Network: 4G/ 3G/ 2G",
           extras: [
@@ -242,6 +262,7 @@ export default [
       id: "5"
     },
     fields: {
+      id: "5",
         category: "phone",
         subCategory: "samsung",
         name: "samsung galaxy fold",
@@ -249,9 +270,13 @@ export default [
         price: 921000,
         ram: 12,
         rom: 512,
+        img: samsungFold,
         installmentalPayment: true,
         warranty: true,
         featured: false,
+        inCart: false,
+        count: 0,
+        total: 0,
         description:
           "Display: 5.8 OLED capacitive touchscreen, 1125 x 2436 pixels, 19.5:9 ratio, Processor -  iOS 13, Storage: 64GB/256GB/512GB ROM + 6GB RAM, Camera: Dual 12MP + 12MP + 12MP Rear/Dual 12MP + 3D ToF camera Front (With Quad-LED flash), Operating System: iOS 13,SIM: Dual SIM, Battery: Non-removable Li-Ion 3190 mAh battery, Network: 4G/ 3G/ 2G",
           extras: [
@@ -293,6 +318,7 @@ export default [
       id: "6"
     },
     fields: {
+      id: "6",
         category: "phone",
         subCategory: "samsung",
         name: "samsung galaxy A51",
@@ -300,9 +326,13 @@ export default [
         price: 69000,
         ram: 4,
         rom: 128,
+        img: samsunga51,
         installmentalPayment: false,
         warranty: true,
         featured: true,
+        inCart: false,
+        count: 0,
+        total: 0,
         description:
           "Display: 5.8 OLED capacitive touchscreen, 1125 x 2436 pixels, 19.5:9 ratio, Processor -  iOS 13, Storage: 64GB/256GB/512GB ROM + 6GB RAM, Camera: Dual 12MP + 12MP + 12MP Rear/Dual 12MP + 3D ToF camera Front (With Quad-LED flash), Operating System: iOS 13,SIM: Dual SIM, Battery: Non-removable Li-Ion 3190 mAh battery, Network: 4G/ 3G/ 2G",
           extras: [

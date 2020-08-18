@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import items from './data'
-import Phones from './pages/Phones'
+// import Phones from './pages/Phones'
 
 const ShopContext = React.createContext()
 
@@ -19,7 +19,12 @@ class ShopProvider extends Component {
         installmentalPayment:false,
         warranty:false,
         featured:false,
-        userData: null
+        userData: null,
+        cart: [],
+        // cart: items,
+        cartSubtotal: 0,
+        cartTax: 0,
+        cartTotal: 0
     }
 
     componentDidMount(){
@@ -43,6 +48,19 @@ class ShopProvider extends Component {
         })
     }
 
+    //temporary phones
+    setPhones = () => {
+        let tempPhones= [];
+        items.forEach(item => {
+            const singleItem = {...item}
+            tempPhones = [...tempPhones,singleItem]
+        })
+        this.setState(()=> {
+            return {items:tempPhones}
+        })
+    }
+    //temporary phones
+
     formatData(items){
         let tempItems = items.map(item => {
             let id = item.sys.id
@@ -61,6 +79,12 @@ class ShopProvider extends Component {
         return phone
     }
 
+    getPhoneForCart = (id) => {
+        let tempPhones = [...this.state.phones]
+        const phone = tempPhones.find((phone) => phone.id === id)
+        return phone
+    }
+
 
     handleChange = (e) => {
         const target = e.target
@@ -76,6 +100,120 @@ class ShopProvider extends Component {
     handleUserData = (user) => {
         this.setState({
             userData: user
+        })
+    }
+
+    // code to increment cart should come here
+    handleCartUpdate = (id) => {
+        let tempPhones = [...this.state.phones]
+        // const index = tempPhones.indexOf(this.getPhoneForCart(id))
+        // const phone = tempPhones[index]
+        const phone = this.getPhoneForCart(id)
+        phone.inCart = true
+        phone.count = 1
+        const price = phone.price
+        phone.total = price
+
+        //change value in actual state
+        this.setState(()=>{
+            return {
+                phones: tempPhones,
+                cart: [...this.state.cart,phone]
+            }
+        },
+        () => {
+            this.addTotals()
+            // console.log(this.state)
+        })
+    }
+
+    increment = id => {
+        let tempCart = [...this.state.cart]
+        const selectedPhone = tempCart.find(item=>item.id === id)
+        const index = tempCart.indexOf(selectedPhone)
+        const phone = tempCart[index]
+    
+        phone.count = phone.count + 1
+        phone.total = phone.price * phone.count
+    
+        this.setState(()=>{
+            return {
+                cart: [...tempCart]
+            }
+        },()=>{
+            this.addTotals()
+        })
+    }
+    
+    decrement = id => {
+        let tempCart = [...this.state.cart]
+        const selectedPhone = tempCart.find(item=>item.id === id)
+        const index = tempCart.indexOf(selectedPhone)
+        const phone = tempCart[index]
+    
+        phone.count = phone.count - 1
+
+        if(phone.count === 0){
+            this.removeItem(id)
+        }
+        else{
+            phone.total = phone.price * phone.count
+            this.setState(()=>{
+                return {
+                    cart: [...tempCart]
+                }
+            },()=>{
+                this.addTotals()
+            })
+        }    
+    }
+
+    removeItem = id =>{
+        let tempPhones = [...this.state.phones]
+        let tempCart = [...this.state.cart]
+    
+        tempCart = tempCart.filter(item => item.id !== id)
+    
+        const index = tempPhones.indexOf(this.getPhoneForCart(id))
+        let removedPhone = tempPhones[index]
+        removedPhone.inCart = false
+        removedPhone.total = 0
+        removedPhone.count = 0
+    
+        this.setState(()=>{
+            return{
+                cart: [...tempCart],
+                phones: [...tempPhones]
+            }
+        }, () => {
+            this.addTotals()
+        })
+    }
+
+    clearCart = () =>{
+        this.setState(()=>{
+            return {
+                cart: []
+            }
+        }, ()=> {
+        this.addTotals()
+        this.setPhones()
+        })
+    }
+
+    addTotals = () =>{
+        let subTotal = 0
+        this.state.cart.map(item =>(subTotal += item.total))
+        const tempTax = subTotal * 0.1
+        const tax = parseFloat(tempTax.toFixed(2))
+        const total = subTotal + tax
+    
+        this.setState(()=>{
+            return {
+                cartSubtotal: subTotal,
+                cartTax: tax,
+                cartTotal: total
+            }
         })
     }
 
@@ -164,7 +302,12 @@ class ShopProvider extends Component {
                     getPhone: this.getPhone,
                     handleChange: this.handleChange,
                     handleReset: this.handleReset,
-                    handleUserData: this.handleUserData
+                    handleUserData: this.handleUserData,
+                    handleCartUpdate: this.handleCartUpdate,
+                    increment: this.increment,
+                    decrement:this.decrement,
+                    removeItem:this.removeItem,
+                    clearCart: this.clearCart 
                 }}
                 >
                     {this.props.children}

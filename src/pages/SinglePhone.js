@@ -1,26 +1,27 @@
-import React, { Component } from 'react'
-import defaultBcg from '../images/defaultBcg-2.jpg'
-import Hero from '../components/Hero'
+import React, { useState, useContext } from 'react'
+// import defaultBcg from '../images/defaultBcg-2.jpg'
+// import Hero from '../components/Hero'
 import Banner from '../components/Banner'
+import { FaCartPlus } from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import {ShopContext} from '../Context'
 import StyledHero from '../components/StyledHero'
 
-export default class SinglePhone extends Component {
-    constructor(props){
-        super(props)
-        //console.log(this.props)
-        this.state = {
-            slug: this.props.match.params.slug,
-            defaultBcg
-        }
-    }    
+export default function SinglePhone (props) {
 
-    static contextType = ShopContext
+    const {context, handleCartUpdate} = useContext(ShopContext)
+    // const [cart, setCart] = useState(0)
 
-    render() {
-        const {getPhone} = this.context
-        const phone = getPhone(this.state.slug)
+    // function handleCart (event) {
+    //     event.preventDefault();
+    //     localStorage.setItem('cart', cart)
+    //     handleCartUpdate(cart)
+    //     console.log(cart)
+    // }
+
+    // render() {
+        const {getPhone} = useContext(ShopContext)
+        const phone = getPhone(props.match.params.slug)
         if(!phone){
             return<div className="error">
                 <h3>No such phone could be found</h3>
@@ -29,10 +30,10 @@ export default class SinglePhone extends Component {
                 </Link>
             </div>
         }
-        const { name, description, price, warranty, extras, installmentalPayment, images, ram, rom} = phone
+        const { id, name, description, price, warranty, extras, installmentalPayment, images, ram, rom, inCart} = phone
         //we are doing this to destructure hence we get only other images
         const [mainImg,...defaultImg] = images
-        console.log(defaultImg)
+        // console.log(defaultImg)
         return (
             <>
                 <StyledHero img={mainImg || this.state.defaultBcg}>
@@ -57,12 +58,20 @@ export default class SinglePhone extends Component {
                         <p>{description}</p>
                     </article>
                     <article className="info">
-                        <h3>info</h3>
+                        <h3>info&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button 
+                                name="cart" 
+                                className="btn-primary" 
+                                onClick={()=>{handleCartUpdate(id)}}
+                                disabled={inCart ? true:false}
+                            >
+                                    {inCart?(<p className="text-capitalize mb-0" disabled>In Cart</p>): <FaCartPlus />}
+                            </button></h3> 
                         <h6>price: N{price}</h6>
                         <h6>ram: {ram} GB</h6>
                         <h6>rom: {rom} GB</h6>
                         <h6>
-                            {warranty?"12 months warranty inclusive":"no warranty included"}
+                            {warranty? "12 months warranty inclusive" : "no warranty included"}
                         </h6>
                         <h6>
                             {/* {breakfast ? "free breakfast included": ""} */}
@@ -81,5 +90,5 @@ export default class SinglePhone extends Component {
             </section> 
             </>
         )
-    }
+    // }
 }
