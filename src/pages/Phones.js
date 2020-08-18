@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import PhonesContainer from '../components/PhonesContainer'
 
 export default function Phones() {
+    console.log(localStorage.getItem('email'))
     return (
         <>
             <Hero hero="roomsHero">

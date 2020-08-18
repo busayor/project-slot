@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import PayPalButton from './PayPalButton'
 
 export default function CartTotals({value, history}) {
+    const email = localStorage.getItem('email')
     const {cartSubtotal, cartTax, cartTotal, clearCart} = value
     return (
        <>
@@ -32,11 +33,16 @@ export default function CartTotals({value, history}) {
                             </span>
                             <strong>$ {cartTotal}</strong>
                         </h5>
-                        <PayPalButton 
-                            total={cartTotal} 
-                            clearCart={clearCart} 
-                            history={history}
-                        />
+                        {email !== null 
+                        ? <PayPalButton total={cartTotal} clearCart={clearCart} history={history} /> 
+                        : <Link to="/login">
+                        <button className="btn btn-outline-danger text-uppercase mb-3 px-5" type="button">
+                            click here to login
+                        </button>
+                    </Link>
+                        }
+
+                        {/* <PayPalButton total={cartTotal} clearCart={clearCart} history={history} /> */}
                     </div>
                 </div>
             </div>
