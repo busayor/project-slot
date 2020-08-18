@@ -16,10 +16,10 @@ function App() {
     <NavBar />
     <Switch>
       <Route exact path="/" component={Home}/>
-      <Route  path="/phones/" component={Phones}/>
-      <Route  path="/login/" component={Login}/>
-      <Route  path="/cart/" component={Cart}/>
-       <Route  path="/phones/:slug" component={SinglePhone}/>
+      <Route exact path="/phones/" component={Phones}/>
+      <Route exact path="/login/" component={Login}/>
+      <Route exact path="/cart/" component={Cart}/>
+       <Route exact path="/phones/:slug" component={SinglePhone}/>
       <Route component={Error} /> 
     </Switch>
     
