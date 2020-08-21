@@ -45,7 +45,7 @@ export default function NavBar () {
                             className="nav-btn" 
                             onClick={handleToggle}
                         >
-                            <FaAlignRight className="nav-icon" />
+                            <FaAlignRight style={{ float: 'right' }} className="nav-icon" />
                         </button>
                     </div>
                     <ul className={isOpen?"nav-links show-nav":"nav-links"}>
@@ -53,7 +53,8 @@ export default function NavBar () {
                         <li><Link to="/phones">Shop</Link></li>
                         {/* {email === null &&  <li><Link to="/login">Login</Link></li>}
                         {email !== null &&  <li>Hi {email} <Link to="/logout">(Logout)</Link></li>} */}
-                        {email === null ? <li><Link to="/login">Login</Link></li> : <li>Hi {email} <a href="#" onClick={handleLogout}>(Logout)</a></li>}
+                        {email === null ? <li><Link to="/login">Login</Link></li> : <li>Hi {email} 
+                        <Link to="/" onClick={handleLogout}>(Logout)</Link></li>}
                     <li><Link to="/cart"><FaCartPlus />Cart ({cart.length})</Link></li>
                     </ul>
                 </div>    

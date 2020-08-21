@@ -9,6 +9,7 @@ import SinglePhone from './pages/SinglePhone'
 import { Route, Switch } from 'react-router-dom'
 import Error from './pages/Error'
 import  NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
        <Route exact path="/phones/:slug" component={SinglePhone}/>
       <Route component={Error} /> 
     </Switch>
+    <Footer/>
     
     </>
   );

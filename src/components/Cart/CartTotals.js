@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import PayPalButton from './PayPalButton'
+import PaystackButton from './PaystackButton'
 
 export default function CartTotals({value, history}) {
     const email = localStorage.getItem('email')
@@ -34,12 +35,15 @@ export default function CartTotals({value, history}) {
                             <strong>$ {cartTotal}</strong>
                         </h5>
                         {email !== null 
-                        ? <PayPalButton total={cartTotal} clearCart={clearCart} history={history} /> 
+                        ? <>
+                            <PayPalButton total={cartTotal} clearCart={clearCart} history={history} /> 
+                            <PaystackButton total={cartTotal} clearCart={clearCart} email={email}/> 
+                        </>
                         : <Link to="/login">
-                        <button className="btn btn-outline-danger text-uppercase mb-3 px-5" type="button">
-                            click here to login
-                        </button>
-                    </Link>
+                            <button className="btn btn-outline-danger text-uppercase mb-3 px-5" type="button">
+                                click here to login
+                            </button>
+                        </Link>
                         }
 
                         {/* <PayPalButton total={cartTotal} clearCart={clearCart} history={history} /> */}

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import Hero from '../Hero'
 // import Banner from '../Banner'
 // import {Link} from 'react-router-dom'
+import Title from '../../components/Title'
 import CartColumns from './CartColumns'
 import EmptyCart from './EmptyCart'
 import {ShopConsumer} from '../../Context'
@@ -24,7 +25,8 @@ export default class Cart extends Component {
                             // console.log(cart)
                             return (
                                 <>
-                                {/* <Title name="your" title="cart"/> */}
+                                <br/>
+                                <Title name="your" title="cart"/>
                                 <CartColumns/>
                                 <CartList value={value}/>
                                 <CartTotals value={value} history={this.props.history}/>
