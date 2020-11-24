@@ -58,7 +58,7 @@ export default function Footer() {
                                 <form>
                                     <div class="newsletter-form">
                                         <input class="form-control" placeholder="Enter Your Email address" type="text"/>
-                                        <button class="btn btn-default btn-sm" type="submit">Go</button>
+                                        <button class="btn-primary" type="submit">Go</button>
                                     </div>
                                 </form>
                             </div>

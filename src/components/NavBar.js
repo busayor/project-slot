@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react'
 import logo from '../images/imagesSlot/logo-icon.png'
-import { FaAlignRight,FaCartPlus } from 'react-icons/fa'
+import { FaAlignRight,FaCartPlus, FaHeart, FaUser } from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
 import {ShopContext} from '../Context'
+import SearchBar from './SearchBar'
 
 export default function NavBar () {
 
@@ -54,10 +55,12 @@ export default function NavBar () {
                         {/* {email === null &&  <li><Link to="/login">Login</Link></li>}
                         {email !== null &&  <li>Hi {email} <Link to="/logout">(Logout)</Link></li>} */}
                         {email === null ? <li><Link to="/login">Login</Link></li> : <li>Hi {email} 
-                        <Link to="/" onClick={handleLogout}>(Logout)</Link></li>}
+                        <Link to="/" onClick={handleLogout}><FaUser />(Logout)</Link></li>}
+                    {/* <li><Link to="/cart"><FaHeart />Favs ({cart.length})</Link></li> */}
                     <li><Link to="/cart"><FaCartPlus />Cart ({cart.length})</Link></li>
                     </ul>
-                </div>    
+                </div>  
+                <SearchBar/>  
             </nav>
         )
 }

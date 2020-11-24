@@ -1,5 +1,5 @@
 import React from 'react'
-// import { FaAlignRight } from 'react-icons/fa'
+import { FaCartPlus } from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import defaultImg from '../images/imagesSlot/Apple/iphone11pro-2.jpg'
@@ -21,11 +21,7 @@ export default function Phone({phone}) {
                     Features
                 </Link>
             </div>
-            <p className="room-info">{name}</p>
-            {/* <p className="room-info">Add to cart</p>
-            <Link to="" className="btn-primary">
-                    Add to cart
-                </Link> */}
+            <p className="room-info">{name} | <Link to=""><FaCartPlus/></Link></p>
         </article>
     )
 }

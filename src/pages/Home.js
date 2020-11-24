@@ -4,6 +4,8 @@ import Banner from '../components/Banner'
 import {Link} from 'react-router-dom'
 // import Services from '../components/Services'
 import FeaturedPhones from '../components/FeaturedPhones'
+import SearchBar from '../components/SearchBar'
+import PhonesFilter from '../components/PhonesFilter'
 
 export default function Home() {
     return (
@@ -18,6 +20,7 @@ export default function Home() {
                 </Link>
             </Banner>
         </Hero>
+        {/* <PhonesFilter/> */}
         {/* <Services /> */}
         <FeaturedPhones />
         </>

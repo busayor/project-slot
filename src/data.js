@@ -104,7 +104,7 @@ export default [
         rom: 128,
         installmentalPayment: false,
         warranty: true,
-        featured: false,
+        featured: true,
         inCart: false,
         count: 0,
         img: iPhone8,
